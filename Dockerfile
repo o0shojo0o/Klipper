@@ -22,7 +22,7 @@ RUN echo 'klippy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/klippy && \
 RUN ln -s /bin/true /bin/systemctl
 USER klippy
 ADD https://raw.githubusercontent.com/KevinOConnor/klipper/master/scripts/install-ubuntu-18.04.sh /klipper/install-ubuntu-18.04.sh
-RUN chmod a+x /klipper/install-ubuntu-18.04.sh
+#RUN chmod a+x /klipper/install-ubuntu-18.04.sh
 RUN /klipper/install-ubuntu-18.04.sh
 # Clean up install script workaround
 RUN sudo rm -f /bin/systemctl
