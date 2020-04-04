@@ -14,7 +14,7 @@ VOLUME /home/klippy/.config
 ### Klipper setup ###
 WORKDIR /home/klippy
 
-COPY . klipper/
+#COPY . klipper/
 USER root
 RUN echo 'klippy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/klippy && \
     chown klippy:klippy -R klipper
