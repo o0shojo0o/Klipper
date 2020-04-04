@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install -y sudo
+    apt-get install -y sudo git
 
 # Create user
 RUN useradd -ms /bin/bash klippy && adduser klippy dialout
