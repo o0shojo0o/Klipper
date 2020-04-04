@@ -16,7 +16,7 @@ WORKDIR /home/klippy
 
 #COPY . klipper/
 USER root
-RUN echo 'klippy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/klippy && \
+RUN echo 'klippy ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/klippy
     #chown klippy:klippy -R klipper
 # This is to allow the install script to run without error
 RUN ln -s /bin/true /bin/systemctl
