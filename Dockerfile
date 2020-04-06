@@ -1,9 +1,20 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && \
-    apt-get install -y sudo git ser2net
+RUN apt-get update && apt-get install -y \
+    sudo \
+    git \
+    # ser2net installation
+    ser2net \
+    # supervisor installation
+    supervisor && \
+    # create directory for child images to store configuration in
+    mkdir -p /var/log/supervisor && \
+    mkdir -p /etc/supervisor/conf.d
 
+# ser2net base configuration 
 COPY data/ser2net.conf /etc/ser2net.conf
+# supervisor base configuration 
+COPY data/supervisor.conf /etc/supervisor.conf
 
 # Create user
 RUN useradd -ms /bin/bash klippy && adduser klippy dialout
@@ -28,4 +39,5 @@ RUN ./klipper/scripts/install-ubuntu-18.04.sh
 # Clean up install script workaround
 RUN sudo rm -f /bin/systemctl
 
-CMD ["/bin/sh", "/usr/sbin/ser2net -d -u && /home/klippy/klippy-env/bin/python /home/klippy/klipper/klippy/klippy.py /home/klippy/.config/printer.cfg"]
+# default command
+CMD ["supervisord", "-c", "/etc/supervisor.conf"]
