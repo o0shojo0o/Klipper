@@ -28,4 +28,4 @@ RUN ./klipper/scripts/install-ubuntu-18.04.sh
 # Clean up install script workaround
 RUN sudo rm -f /bin/systemctl
 
-CMD ["/usr/sbin/ser2net -d -u; /home/klippy/klippy-env/bin/python /home/klippy/klipper/klippy/klippy.py /home/klippy/.config/printer.cfg"]
+CMD ["ser2net -d -u; /home/klippy/klippy-env/bin/python /home/klippy/klipper/klippy/klippy.py /home/klippy/.config/printer.cfg"]
