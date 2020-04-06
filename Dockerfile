@@ -38,6 +38,6 @@ RUN git clone https://github.com/KevinOConnor/klipper
 RUN ./klipper/scripts/install-ubuntu-18.04.sh
 # Clean up install script workaround
 RUN sudo rm -f /bin/systemctl
-
+USER root
 # default command
 CMD ["supervisord", "-c", "/etc/supervisor.conf"]
